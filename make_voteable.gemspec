@@ -36,6 +36,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'dm-types', '1.1.0'
   s.add_dependency 'dm-validations', '1.1.0'
   s.add_dependency 'dm-zone-types', '0.3'
+  s.add_dependency 'rails', '~> 3.0.0'
   
   s.add_development_dependency 'bundler', '~> 1.0.0'
   s.add_development_dependency 'rspec', '~> 2.5.0'
