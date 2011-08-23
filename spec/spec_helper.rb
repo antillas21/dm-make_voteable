@@ -22,6 +22,7 @@ require 'dm-transactions'
 require 'dm-types'
 require 'dm-validations'
 require 'dm-zone-types'
+require 'rails'
 
 $LOAD_PATH.unshift(File.dirname(__FILE__) + '/../lib')
 require 'make_voteable'

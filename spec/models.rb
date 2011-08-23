@@ -5,6 +5,8 @@ class VoteableModel
   property :name, String
   property :up_votes, Integer, :required => true, :default => 0
   property :down_votes, Integer, :required => true, :default => 0
+  
+  make_voteable
 end
 
 class VoterModel
@@ -14,6 +16,8 @@ class VoterModel
   property :name, String
   property :up_votes, Integer, :required => true, :default => 0
   property :down_votes, Integer, :required => true, :default => 0
+  
+  make_voter
 end
 
 class InvalidVoteableModel
