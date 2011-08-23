@@ -1,0 +1,15 @@
+---
+# This is a sample database file for the DataMapper ORM
+defaults: &defaults
+  adapter:  mysql
+  username: root
+  password: password
+  host:     localhost
+  database: make_voteable_test
+
+# test: &test
+  # database: make_voteable_test
+  # <<: *defaults
+  # repositories:
+  #   repo1:
+  #     database: sample_development

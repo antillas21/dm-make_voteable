@@ -1,4 +1,7 @@
 require 'rubygems'
+require 'yaml'
+YAML::ENGINE.yamler= 'syck'
+
 require 'bundler'
 require 'logger'
 require 'rspec'
@@ -25,9 +28,10 @@ require 'make_voteable'
 
 # Configure DataMapper
 DataMapper::Logger.new($stdout, :debug)
-DataMapper.setup(:default, 'mysql://localhost/make_voteable_test')
+database = YAML.load_file(File.dirname(__FILE__) + '/database.yml')
+DataMapper.setup(:default, database['defaults'])
 load(File.dirname(__FILE__) + '/models.rb')
-DataMapper.automigrate!
+DataMapper.auto_migrate!
 
 # Configure RSpec
 RSpec.configure do |config|
