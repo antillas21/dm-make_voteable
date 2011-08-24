@@ -26,14 +26,14 @@ module MakeVoteable
         else
           voting.up_vote = true
           voteable.down_votes -= 1
-          # self.down_votes -= 1 if has_attribute?(:down_votes)
+          self.down_votes -= 1 #if has_attribute?(:down_votes)
         end
       else
         voting = Voting.create(:voteable => voteable, :voter => self, :up_vote => true)
       end
 
       voteable.up_votes += 1
-      self.up_votes += 1 if has_attribute?(:up_votes)
+      self.up_votes += 1 #if has_attribute?(:up_votes)
 
       Voting.transaction do
         save
@@ -166,11 +166,11 @@ module MakeVoteable
     private
 
     def fetch_voting(voteable)
-      Voting.all(
+      Voting.first(
         :voteable_type => voteable.class.to_s,
         :voteable_id => voteable.id,
         :voter_type => self.class.to_s,
-        :voter_id => self.id).try(:first)
+        :voter_id => self.id)
     end
 
     def check_voteable(voteable)

@@ -17,24 +17,18 @@ describe "Make Voteable" do
     @voter.class.voter?.should == true
   end
   
+  it "should get correct vote summary" do
+    @voter.up_vote(@voteable).should == true
+  #   @voteable.votes.should == 1
+  #   @voter.down_vote(@voteable).should == true
+  #   @voteable.votes.should == -1
+  #   @voter.unvote(@voteable).should == true
+  #   @voteable.votes.should == 0
+  end
+  
 end
 
 # describe "Make Voteable" do
-#   before(:each) do
-#     @voteable = VoteableModel.create(:name => "Votable 1")
-#     @voter = VoterModel.create(:name => "Voter 1")
-#   end
-# 
-#   it "should create a voteable instance" do
-#     @voteable.class.should == VoteableModel
-#     @voteable.class.voteable?.should == true
-#   end
-# 
-#   it "should create a voter instance" do
-#     @voter.class.should == VoterModel
-#     @voter.class.voter?.should == true
-#   end
-# 
 #   it "should get correct vote summary" do
 #     @voter.up_vote(@voteable).should == true
 #     @voteable.votes.should == 1
