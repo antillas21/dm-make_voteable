@@ -19,7 +19,7 @@ describe "Make Voteable" do
   
   it "should get correct vote summary" do
     @voter.up_vote(@voteable).should == true
-  #   @voteable.votes.should == 1
+    @voteable.votes.should == 1
   #   @voter.down_vote(@voteable).should == true
   #   @voteable.votes.should == -1
   #   @voter.unvote(@voteable).should == true

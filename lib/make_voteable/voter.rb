@@ -17,32 +17,40 @@ module MakeVoteable
     # Changes a down vote to an up vote if the the voter already down voted the voteable.
     def up_vote(voteable)
       check_voteable(voteable)
-
-      voting = fetch_voting(voteable)
-
-      if voting
-        if voting.up_vote
-          raise Exceptions::AlreadyVotedError.new(true)
-        else
-          voting.up_vote = true
-          voteable.down_votes -= 1
-          self.down_votes -= 1 #if has_attribute?(:down_votes)
-        end
-      else
-        voting = Voting.create(:voteable => voteable, :voter => self, :up_vote => true)
-      end
-
+      
       voteable.up_votes += 1
-      self.up_votes += 1 #if has_attribute?(:up_votes)
-
-      Voting.transaction do
-        save
-        voteable.save
-        voting.save
-      end
-
-      true
+      self.up_votes += 1
+      voteable.save
+      self.save
     end
+    # def up_vote(voteable)
+    #   check_voteable(voteable)
+    # 
+    #   voting = fetch_voting(voteable)
+    # 
+    #   if voting
+    #     if voting.up_vote
+    #       raise Exceptions::AlreadyVotedError.new(true)
+    #     else
+    #       voting.up_vote = true
+    #       voteable.down_votes -= 1
+    #       self.down_votes -= 1 #if has_attribute?(:down_votes)
+    #     end
+    #   else
+    #     voting = Voting.create(:voteable => voteable, :voter => self, :up_vote => true)
+    #   end
+    # 
+    #   voteable.up_votes += 1
+    #   self.up_votes += 1 #if has_attribute?(:up_votes)
+    # 
+    #   Voting.transaction do
+    #     save
+    #     voteable.save
+    #     voting.save
+    #   end
+    # 
+    #   true
+    # end
 
     # Up votes the +voteable+, but doesn't raise an error if the votelable was already up voted.
     # The vote is simply ignored then.
