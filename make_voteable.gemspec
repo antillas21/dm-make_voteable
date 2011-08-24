@@ -39,6 +39,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'rails', '~> 3.0.0'
   
   s.add_development_dependency 'bundler', '~> 1.0.0'
-  s.add_development_dependency 'rspec', '~> 2.5.0'
+  s.add_development_dependency 'rspec', '~> 2.6.0'
   s.add_development_dependency 'dm-mysql-adapter', '~> 1.1.0'
+  s.add_development_dependency "generator_spec", "~> 0.8.4"
 end
